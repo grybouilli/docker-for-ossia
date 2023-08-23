@@ -4,10 +4,12 @@ Get the Dockerfile for your `ossia-docker`. If you want to add stages - e.g. ins
 <br>
 * the new stage(s) is/are needed prior to the build of ossia : 
   * add the stage prior to `FROM score-dock as score-final` ;
-<br>  
+
 * the build of ossia can be done without the new stage(s) : 
   * add the stage prior at the end of the dockerfile, before the entry point.
+
 * cache the rules that download new packages/modules in case you need to re-run your build like so:
+  
 ```docker
   RUN \
     --mount=type=cache,target=/var/cache/<cache-name> \
